@@ -1,47 +1,93 @@
 package main
 
-/*
-When doing these tasks, it's recommended using fmt.Println or fmt.Printf to test the output of your code to make sure
-it works correctly. This will usually entail console logging the answer directly or console logging the
-invocation (call) of the function so when it returns a value, that value will be logged to the console.
-An example of this would be:  console.log(theFunction(value1,value2))
-*/
-
-/*
-Task 1a - Voting Age (not auto tested)
-
-Do the following:
-   1. Create a variable called votingAge and assign it a number value
-   2. Console log true if age is 18 or higher
-
-   HINT: no function required
-*/
-
-/*
-Task 1b - Values (not auto tested)
-
-Do the following:
-   1. Declare two variables and assign them values (good names for these might be firstThing and secondThing)
-   2. Use a conditional to check the value of the 1st variable versus the value assigned to the 2nd variable
-   3. Change the value of the 1st variable if the conditional in step 2 is true
-   4. Print the value of the 1st variable
-
-   HINT: no function required
-*/
-
-/*
-Task 1c - Convert Strings to Numbers (not auto tested)
-
-Do the following:
-   1. Declare a variable with the string type value of "1999"
-   2. Convert the string value of "1999" to a integer value of 1999
-   3. Print the result
-
-   HINT: look up the stringconv.Atoi method
-*/
+import (
+	"fmt"
+	"math/rand"
+)
 
 // You can test your functions here
 func main() {
+
+	/*
+		When doing these tasks, it's recommended using fmt.Println or fmt.Printf to test the output of your code to make sure
+		it works correctly. This will usually entail console logging the answer directly or console logging the
+		invocation (call) of the function so when it returns a value, that value will be logged to the console.
+		An example of this would be:  console.log(theFunction(value1,value2))
+	*/
+
+	/*
+	   Task 1a - Voting Age (not auto tested)
+
+	   Do the following:
+
+	    1. Create a variable called votingAge and assign it a number value
+
+	    2. Console log true if age is 18 or higher
+
+	       HINT: no function required
+	*/
+	// votingAge := 47
+	// if votingAge >= 18 {
+	// 	fmt.Println("True")
+	// 	fmt.Println("Yup, you gucci.")
+	// } else {
+	// 	fmt.Println("Bitch you too young!")
+	// }
+
+	/*
+	   Task 1b - Values (not auto tested)
+
+	   Do the following:
+	      1. Declare two variables and assign them values (good names for these might be firstThing and secondThing)
+	      2. Use a conditional to check the value of the 1st variable versus the value assigned to the 2nd variable
+	      3. Change the value of the 1st variable if the conditional in step 2 is true
+	      4. Print the value of the 1st variable
+
+	      HINT: no function required
+	*/
+	// firstThing := 43
+	// secondThing := 99
+	// if firstThing != secondThing {
+	// 	//fmt.Println("The value of First Thing Var Before", firstThing)
+	// 	firstThing = secondThing
+	// 	//fmt.Println("The value of First Thing Var After", firstThing)
+	// }
+	// fmt.Println("The value of First Thing", firstThing)
+
+	/*
+			   Task 1c - Convert Strings to Numbers (not auto tested)
+
+			   Do the following:
+			      1. Declare a variable with the string type value of "1999"
+			      2. Convert the string value of "1999" to a integer value of 1999
+			      3. Print the result
+
+			      HINT: look up the stringconv.Atoi method
+
+		         **USER COMMENTS: ADD HINT TO USE ERROR HANDLING.....MAKE A JOKE ABOUT FATALITES PLEASE
+	*/
+	// strYearOne := "1999"
+	// numYearOne, Err := strconv.Atoi(strYearOne)
+	// if Err != nil {
+	// 	log.Fatal("StrYearOne is not what it seems, YOU DIED")
+	// }
+	// fmt.Println("YTK or Bust in what Year? -- ", numYearOne)
+
+	// fmt.Println("MULTIPLY ", multiply(2, 3))
+
+	// myAge := 27
+	// fmt.Println("My age", myAge, "in dog years is: ", dogYears(myAge))
+
+	fmt.Println("ROCK, PAPER, SCISSORS!!!!!!")
+
+	//var randoCompNum int
+	randoChoice := [3]string{"rock", "paper", "scissors"}
+	//Intn is exclusive, 2 is the upper bound not 3.
+	//randomly picks array index value to create "random" choice for computer
+	//rand.Intn returns a value, which then is used to index the array
+	compChoice := randoChoice[rand.Intn(3)]
+	userChoice := randoChoice[rand.Intn(3)]
+	fmt.Println(game(userChoice, compChoice))
 
 }
 
@@ -66,9 +112,8 @@ Do the following:
  3. Return the newly calculated age
 */
 
-func dogYears( /*add your code here*/ ) int {
-	/*add your code here*/
-	return 0
+func dogYears(humanAge int) int {
+	return humanAge * 7
 }
 
 // Rock, Paper, Scissors - Let's play against the computer!
@@ -94,7 +139,36 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 */
 
 func game(user string, computer string) string {
-	/*add your code here*/
+	if user == "rock" {
+		if computer == "scissors" {
+			return "you win!"
+		}
+		if computer == "paper" {
+			return "you lose!"
+		} else {
+			return "it's a tie!"
+		}
+	}
+	if user == "paper" {
+		if computer == "rock" {
+			return "you win!"
+		}
+		if computer == "scissors" {
+			return "you lose!"
+		} else {
+			return "it's a tie!"
+		}
+	}
+	if user == "scissors" {
+		if computer == "paper" {
+			return "you win!"
+		}
+		if computer == "rock" {
+			return "you lose!"
+		} else {
+			return "it's a tie!"
+		}
+	}
 	return ""
 }
 
@@ -173,7 +247,7 @@ Using the vowelCounter function below do the following:
 1. Receive a string as a parameter
 2. Count and return the number of vowels within that string.  It should handle both capitalized and uncapitalized vowels.
 
-HINT - you may need to study tomorrow's content on arrays
+HINT - you may need to study tomorrow's content on slices
 HINT - try looking up the .includes() method
 
 NOTE: This function is not tested
